@@ -29,19 +29,22 @@ with open(csvpath, "r")  as csvfile:
     counting = 0
     csvreader = csv.reader(csvfile)
     next(csvreader)
-    
+    maxcount = 0
     for line in candidate_list:
         eachcandidate = line
         counting = 0
         for line2 in candidates:
             if eachcandidate == line2:
                 counting = counting + 1
+            if maxcount < counting:
+                maxcount = counting
+                winner = eachcandidate
         
         
         
         print(f"{eachcandidate} had {counting} votes")
+        print(f"Candidate {winner} won with {maxcount} votes and {(maxcount/total)*100}% ")
            
-
 
 
 
